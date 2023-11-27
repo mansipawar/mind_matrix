@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5; /* Set a modern background color */
+            color: #333; /* Set text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #result-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff; /* Set a modern background color for the result container */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: bold; /* Make the outcome text bold */
+            color: #007BFF; /* Set a modern color for the outcome */
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: bold; /* Make h3 headings bold */
+            color: #555; /* Set a subdued color for secondary headings */
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px; /* Add rounded corners to images */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+<div id="result-container">
+    <h1>Result</h1>
+    <h3>Outcome:</h3>
+    <p id="outcome-display"></p>
+
+    <!-- Positive Images Section -->
+    <h3>Stay Positive!</h3>
+   
+    <!-- Next Steps Section -->
+    <h3>Next Steps:</h3>
+    <div id="next-steps-container"></div>
+
+    <script>
+        // Extract query parameters from the URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var outcome = urlParams.get('outcome');
+
+        // Display the outcome in the result container
+        document.getElementById('outcome-display').innerText = getOutcomeText(outcome);
+
+        // Display Next Steps based on the outcome
+        displayNextSteps(outcome);
+
+        // Function to get outcome text
+        function getOutcomeText(outcome) {
+            switch (outcome) {
+                case '1':
+                    return 'Stress';
+                case '2':
+                    return 'Anxiety';
+                case '3':
+                    return 'Depression';
+                case '4':
+                    return 'Normal';
+                default:
+                    return 'Unknown';
+            }
+        }
+
+        // Function to display Next Steps based on the outcome
+        function displayNextSteps(outcome) {
+            var nextStepsContainer = document.getElementById('next-steps-container');
+            var nextStepsText = '';
+
+            switch (outcome) {
+                case '1':
+                    nextStepsText = 'For stress management, consider activities like deep breathing, exercise, and talking to a friend.';
+                    break;
+                case '2':
+                    nextStepsText = 'For anxiety relief, try mindfulness meditation, regular exercise, and limiting caffeine intake.';
+                    break;
+                case '3':
+                    nextStepsText = 'If youre experiencing depression, reach out to a mental health professional, engage in self-care, and talk to supportive friends or family';
+                    break;
+                case '4':
+                    nextStepsText = 'Congratulations on being in a normal state! Maintain a healthy lifestyle and seek support when needed.';
+                    break;
+                default:
+                    nextStepsText = 'Unknown outcome. Please consult a professional for personalized advice.';
+                    break;
+            }
+
+            // Append the Next Steps text to the container
+            nextStepsContainer.innerHTML = '<p>' + nextStepsText + '</p>';
+        }
+    </script>
+    </div>
+</body>
+</html>

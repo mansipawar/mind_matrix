@@ -23,3 +23,9 @@ Facial Emotion Detection using CNN:
 CNN (Convolutional Neural Network) approaches for facial emotion identification use deep learning
 models to automatically identify and categorize human emotions from facial expressions in pictures or video
 frames.
+
+# 2. Run on Local Machines
+
+Download ZIP file 
+First run app.py (server)
+then run index.html
